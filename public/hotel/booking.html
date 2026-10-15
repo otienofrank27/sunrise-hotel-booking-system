@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room Reservation &amp; Billing - Sunrise Hotel, Kisumu</title>
+  <meta name="description" content="Online room reservation and estimated billing form for Sunrise Hotel in Kisumu." />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <img src="images/logo.jpg" alt="Sunrise Hotel Logo" class="brand-logo-img">
+        <span>Sunrise Hotel, Kisumu</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#rooms">Rooms &amp; Rates</a></li>
+        <li><a href="booking.html" class="active">Reservation Form</a></li>
+      </ul>
+
+      <a href="index.html" class="btn-secondary">
+        &larr; Back to Home
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="section-header">
+      <h1 class="section-title">Online Room Reservation &amp; Estimated Billing</h1>
+      <p class="section-desc">
+        Complete your booking details below. Your bill calculates dynamically in real time and will be independently verified by our server upon submission.
+      </p>
+    </div>
+
+
+    <div id="capacity-warning" class="capacity-warning" role="alert"></div>
+
+    <div class="booking-layout">
+
+      <section class="booking-card">
+        <form id="booking-form" action="process_booking.php" method="POST" novalidate>
+
+          <input type="hidden" id="client_calculated_total" name="client_calculated_total" value="0">
+
+          <fieldset class="form-fieldset">
+            <legend class="fieldset-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              1. Customer Information
+            </legend>
+
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label for="customer_name">Customer Full Name <span class="req">*</span></label>
+                <input type="text" id="customer_name" name="customer_name" placeholder="e.g., Peter Mwangi" required>
+                <span class="error-message" id="name-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="id_passport">National ID / Passport Number <span class="req">*</span></label>
+                <input type="text" id="id_passport" name="id_passport" placeholder="e.g., 29482103" required>
+                <span class="error-message" id="id-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address <span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder="e.g., peter@example.com" required>
+                <span class="error-message" id="email-error"></span>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="phone">Phone Number (10 Digits) <span class="req">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="e.g., 0712345678" maxlength="10" required>
+                <span class="helper-text">Must contain exactly 10 digits (e.g. 07xxxxxxxx).</span>
+                <span class="error-message" id="phone-error"></span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-fieldset">
+            <legend class="fieldset-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              2. Stay Dates &amp; Occupancy
+            </legend>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="checkin_date">Check-in Date <span class="req">*</span></label>
+                <input type="date" id="checkin_date" name="checkin_date" required>
+                <span class="error-message" id="checkin-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="nights">Number of Nights (1 - 14) <span class="req">*</span></label>
+                <input type="number" id="nights" name="nights" min="1" max="14" value="1" required>
+                <span class="helper-text">Stay duration between 1 and 14 nights.</span>
+                <span class="error-message" id="nights-error"></span>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="guests">Number of Guests <span class="req">*</span></label>
+                <input type="number" id="guests" name="guests" min="1" max="10" value="1" required>
+                <span class="helper-text" id="max-guests-info">Maximum capacity updates based on room choice.</span>
+                <span class="error-message" id="guests-error"></span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-fieldset">
+            <legend class="fieldset-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              3. Room Category <span class="req">*</span>
+            </legend>
+
+            <div class="radio-group">
+              <label class="option-box">
+                <input type="radio" name="room_type" value="Single" required>
+                <div class="option-label">
+                  <span class="option-title">1. Single Room</span>
+                  <span class="option-sub">Max capacity: 1 Guest · Work desk &amp; courtyard view</span>
+                </div>
+                <span class="option-rate">KSh 3,500 / night</span>
+              </label>
+
+              <label class="option-box">
+                <input type="radio" name="room_type" value="DeluxeSingle" required>
+                <div class="option-label">
+                  <span class="option-title">2. Deluxe Single Room</span>
+                  <span class="option-sub">Max capacity: 1 Guest · Queen-single &amp; Lake Victoria view</span>
+                </div>
+                <span class="option-rate">KSh 4,000 / night</span>
+              </label>
+
+              <label class="option-box selected">
+                <input type="radio" name="room_type" value="Double" checked required>
+                <div class="option-label">
+                  <span class="option-title">3. Double Room</span>
+                  <span class="option-sub">Max capacity: 2 Guests · King bed &amp; lakefront balcony</span>
+                </div>
+                <span class="option-rate">KSh 5,000 / night</span>
+              </label>
+
+              <label class="option-box">
+                <input type="radio" name="room_type" value="SuperiorDouble" required>
+                <div class="option-label">
+                  <span class="option-title">4. Superior Lakeview Double</span>
+                  <span class="option-sub">Max capacity: 2 Guests · Sunset veranda &amp; marble vanity</span>
+                </div>
+                <span class="option-rate">KSh 6,000 / night</span>
+              </label>
+
+              <label class="option-box">
+                <input type="radio" name="room_type" value="TwinDeluxe" required>
+                <div class="option-label">
+                  <span class="option-title">5. Twin Deluxe Room</span>
+                  <span class="option-sub">Max capacity: 2 Guests · Two separate beds &amp; garden patio</span>
+                </div>
+                <span class="option-rate">KSh 5,500 / night</span>
+              </label>
+
+              <label class="option-box">
+                <input type="radio" name="room_type" value="Family" required>
+                <div class="option-label">
+                  <span class="option-title">6. Family Room</span>
+                  <span class="option-sub">Max capacity: 4 Guests · Master &amp; twin beds, sunset lounge</span>
+                </div>
+                <span class="option-rate">KSh 7,000 / night</span>
+              </label>
+
+              <label class="option-box">
+                <input type="radio" name="room_type" value="Executive" required>
+                <div class="option-label">
+                  <span class="option-title">7. Executive Lake Suite</span>
+                  <span class="option-sub">Max capacity: 3 Guests · Living lounge &amp; VIP turndown</span>
+                </div>
+                <span class="option-rate">KSh 10,000 / night</span>
+              </label>
+
+              <label class="option-box">
+                <input type="radio" name="room_type" value="Cottage" required>
+                <div class="option-label">
+                  <span class="option-title">8. Lakefront Luxury Cottage</span>
+                  <span class="option-sub">Max capacity: 3 Guests · Standalone chalet &amp; stone sun deck</span>
+                </div>
+                <span class="option-rate">KSh 12,000 / night</span>
+              </label>
+
+              <label class="option-box">
+                <input type="radio" name="room_type" value="Honeymoon" required>
+                <div class="option-label">
+                  <span class="option-title">9. Honeymoon Panoramic Villa</span>
+                  <span class="option-sub">Max capacity: 2 Guests · Canopy bed &amp; private plunge pool</span>
+                </div>
+                <span class="option-rate">KSh 14,000 / night</span>
+              </label>
+
+              <label class="option-box">
+                <input type="radio" name="room_type" value="Executive" required>
+                <div class="option-label">
+                  <span class="option-title">10. Executive Sunset Suite</span>
+                  <span class="option-sub">Max capacity: 4 Guests · Penthouse, chandelier &amp; jacuzzi</span>
+                </div>
+                <span class="option-rate">KSh 15,000 / night</span>
+              </label>
+            </div>
+            <span class="error-message" id="room-error"></span>
+          </fieldset>
+
+          <fieldset class="form-fieldset">
+            <legend class="fieldset-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              4. Additional Services &amp; Upgrades
+            </legend>
+
+            <div class="checkbox-group">
+              
+              <label class="option-box">
+                <input type="checkbox" id="breakfast" name="breakfast" value="yes">
+                <div class="option-label">
+                  <span class="option-title">Daily Gourmet Breakfast Buffet</span>
+                  <span class="option-sub">KSh 700 per person per day (Guests &times; Nights &times; 700)</span>
+                </div>
+                <span class="option-rate">+ KSh 700 / pers / day</span>
+              </label>
+
+              <label class="option-box">
+                <input type="checkbox" id="airport_transfer" name="airport_transfer" value="yes">
+                <div class="option-label">
+                  <span class="option-title">Kisumu Airport Shuttle Transfer</span>
+                  <span class="option-sub">Private vehicle transfer to/from Kisumu International Airport (KIS)</span>
+                </div>
+                <span class="option-rate">+ KSh 2,000 flat</span>
+              </label>
+
+              <div id="airport-details-box">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="flight_number">Flight Number / Airline Carrier</label>
+                    <input type="text" id="flight_number" name="flight_number" placeholder="e.g., KQ 654 or 748 Air Services">
+                    <span class="error-message" id="flight-error"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="pickup_time">Estimated Arrival / Pickup Time</label>
+                    <input type="time" id="pickup_time" name="pickup_time">
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="transfer_type">Transfer Direction</label>
+                    <select id="transfer_type" name="transfer_type">
+                      <option value="Airport to Hotel">Arrival (Kisumu Airport &rarr; Sunrise Hotel)</option>
+                      <option value="Hotel to Airport">Departure (Sunrise Hotel &rarr; Kisumu Airport)</option>
+                      <option value="Round Trip">Round Trip Transfer</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 12px;">
+                <label style="display:block; margin-bottom: 8px; color: var(--secondary); font-weight:700;">
+                  Exclusive Stay Enhancements:
+                </label>
+
+                <label class="option-box" style="margin-bottom: 8px;">
+                  <input type="checkbox" id="conference_room" name="conference_room" value="yes">
+                  <div class="option-label">
+                    <span class="option-title">Conference Room Booking</span>
+                    <span class="option-sub">Full-day access to executive AV-equipped boardroom overlooking Lake Victoria</span>
+                  </div>
+                  <span class="option-rate">+ KSh 5,000 flat</span>
+                </label>
+
+                <label class="option-box" style="margin-bottom: 8px;">
+                  <input type="checkbox" id="extra_bed" name="extra_bed" value="yes">
+                  <div class="option-label">
+                    <span class="option-title">Extra Deluxe Bed Addition</span>
+                    <span class="option-sub">KSh 1,500 per night for an additional rollaway bed</span>
+                  </div>
+                  <span class="option-rate">+ KSh 1,500 / night</span>
+                </label>
+
+                <label class="option-box">
+                  <input type="checkbox" id="late_checkout" name="late_checkout" value="yes">
+                  <div class="option-label">
+                    <span class="option-title">Late Checkout Extension</span>
+                    <span class="option-sub">Guaranteed room access and resort amenities extended until 4:00 PM</span>
+                  </div>
+                  <span class="option-rate">+ KSh 2,000 flat</span>
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn-submit" id="submit-btn">
+            Submit Booking &amp; Process Payment &rarr;
+          </button>
+        </form>
+      </section>
+
+      <aside class="bill-card" aria-live="polite">
+        <h2 class="bill-title">Estimated Booking Bill</h2>
+        <p class="helper-text" style="margin-bottom: 14px;">Calculated automatically using JavaScript as options change.</p>
+
+        <div class="summary-pill">
+          <div class="summary-pill-row">
+            <span>Room Type:</span>
+            <strong id="summary-room-type">Double Room</strong>
+          </div>
+          <div class="summary-pill-row">
+            <span>Duration:</span>
+            <strong id="summary-nights">1 Night</strong>
+          </div>
+          <div class="summary-pill-row">
+            <span>Occupancy:</span>
+            <strong id="summary-guests">1 Guest</strong>
+          </div>
+        </div>
+
+        <div class="bill-item-row">
+          <div>
+            <span class="bill-item-label">Room Cost</span>
+            <span class="bill-item-sub">Rate &times; Nights</span>
+          </div>
+          <span class="bill-item-value" id="bill-room-cost">KSh 5,000</span>
+        </div>
+
+        <div class="bill-item-row">
+          <div>
+            <span class="bill-item-label">Breakfast Cost</span>
+            <span class="bill-item-sub">KSh 700 &times; Guests &times; Nights</span>
+          </div>
+          <span class="bill-item-value" id="bill-breakfast-cost">KSh 0</span>
+        </div>
+
+        <div class="bill-item-row">
+          <div>
+            <span class="bill-item-label">Airport Transfer</span>
+            <span class="bill-item-sub">Flat shuttle charge</span>
+          </div>
+          <span class="bill-item-value" id="bill-transfer-cost">KSh 0</span>
+        </div>
+
+        <div class="bill-item-row">
+          <div>
+            <span class="bill-item-label">Additional Add-ons</span>
+            <span class="bill-item-sub">Conference / Extra Bed / Late Checkout</span>
+          </div>
+          <span class="bill-item-value" id="bill-extra-cost">KSh 0</span>
+        </div>
+
+        <div class="bill-total-row">
+          <span class="bill-total-label">TOTAL ESTIMATED:</span>
+          <span class="bill-total-value" id="bill-total-cost">KSh 5,000</span>
+        </div>
+
+        <p class="helper-text" style="margin-top: 14px; font-size: 0.78rem;">
+          * Rates are inclusive of statutory levies. Server (<code>process_booking.php</code>) independently verifies all charges upon submission.
+        </p>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong style="color: #ffffff; font-size: 1.15rem;">Sunrise Hotel, Kisumu</strong>
+        <p style="margin-top: 4px; color: #cbd5e1;">Milimani Lakefront Promenade, Kisumu, Kenya | Tel: +254 748 642 275</p>
+        <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 2px;">Email: marvinfrank2680@gmail.com</p>
+      </div>
+      <div>
+        <p>&copy; 2026 Sunrise Hotel, Kisumu. All Rights Reserved.</p>
+        <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 2px;">Powered by FrankHoldings</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

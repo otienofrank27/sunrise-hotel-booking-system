@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunrise Hotel Kisumu - Lake Victoria Luxury Stays &amp; Online Booking</title>
+  <meta name="description" content="Online Hotel Room Booking and Billing System for Sunrise Hotel in Kisumu, on the serene shores of Lake Victoria. Built with HTML, CSS, JavaScript, and PHP." />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <img src="images/logo.jpg" alt="Sunrise Hotel Logo" class="brand-logo-img">
+        <span>Sunrise Hotel, Kisumu</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="#rooms">Rooms &amp; Rates</a></li>
+        <li><a href="#amenities">Services</a></li>
+        <li><a href="booking.html">Reserve Room</a></li>
+      </ul>
+
+      <a href="booking.html" class="btn-cta">
+        Book Room Online &rarr;
+      </a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-img-wrap">
+      <img src="images/sunrise_hotel_hero.jpg" alt="Sunrise Hotel Resort on Lake Victoria, Kisumu" class="hero-img">
+    </div>
+    <div class="hero-content">
+      <span class="hero-badge">Lake Victoria Waterfront Resort</span>
+      <h1 class="hero-title">Enjoy the Tranquil Luxury on the Shores of Lake Victoria, Kisumu</h1>
+      <p class="hero-sub">
+        Wake up to serene freshwater sunrises, and Kenyan hospitality. Select your room, configure dining and transfers, and receive instant booking confirmation.
+      </p>
+      <div class="hero-actions">
+        <a href="booking.html" class="btn-cta" style="padding: 12px 24px; font-size: 1rem;">
+          Reserve Room Online
+        </a>
+        <a href="#rooms" class="btn-secondary" style="background: rgba(255,255,255,0.92); border: none;">
+          View Room Tariffs
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section class="amenities-bar" id="amenities">
+      <div class="amenity-item">
+        <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+          <line x1="6" y1="1" x2="6" y2="4"></line>
+          <line x1="10" y1="1" x2="10" y2="4"></line>
+          <line x1="14" y1="1" x2="14" y2="4"></line>
+        </svg>
+        <div>
+          <h4 class="amenity-title">Breakfast Buffet</h4>
+          <p class="amenity-text">Fresh daily breakfast buffet at KSh 700 per person per day.</p>
+        </div>
+      </div>
+
+      <div class="amenity-item">
+        <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="1" y="3" width="15" height="13"></rect>
+          <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+          <circle cx="5.5" cy="18.5" r="2.5"></circle>
+          <circle cx="18.5" cy="18.5" r="2.5"></circle>
+        </svg>
+        <div>
+          <h4 class="amenity-title">Kisumu International Airport</h4>
+          <p class="amenity-text">Dedicated pickup and drop-off from Kisumu International Airport (KIS) for KSh 2,000.</p>
+        </div>
+      </div>
+
+      <div class="amenity-item">
+        <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <div>
+          <h4 class="amenity-title">Instant Billing Calculator</h4>
+          <p class="amenity-text">Calculates total room, breakfast, and transfer costs in real time before booking.</p>
+        </div>
+      </div>
+
+      <div class="amenity-item">
+        <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <div>
+          <h4 class="amenity-title">Verified Hospitality</h4>
+          <p class="amenity-text">Scenic lakefront garden, infinity swimming pool, high-speed Wi-Fi, and 24/7 concierge.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="rooms">
+      <div class="section-header">
+        <h2 class="section-title">Accommodations &amp; Nightly Rates</h2>
+        <p class="section-desc">
+          Capacities and tariffs are strictly verified for your comfort. Select your preferred room category to begin your reservation.
+        </p>
+      </div>
+
+      <div class="room-grid">
+
+        <article class="room-card">
+          <div class="room-thumb">
+            <img src="images/room_single.jpg" alt="Single Room at Sunrise Hotel Kisumu">
+            <span class="room-badge-pill">Max 1 Guest</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Single Room</h3>
+            <div class="room-meta">
+              <span>Capacity: 1 Guest</span>
+              <span>·</span>
+              <span>Work Desk &amp; En-suite Shower</span>
+            </div>
+            <p class="room-desc">
+              Tailored for solo business travelers visiting Kisumu. Features a plush single bed, dedicated ergonomic workstation, fast Wi-Fi, and quiet garden courtyard setting.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-rate">KSh 3,500</span>
+                <span class="room-rate-unit"> / night</span>
+              </div>
+              <a href="booking.html?room=Single" class="btn-cta">Book Single</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <div class="room-thumb">
+            <img src="images/room_deluxe_single.jpg" alt="Deluxe Single Room with Lake View">
+            <span class="room-badge-pill">Max 1 Guest</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Deluxe Single Room</h3>
+            <div class="room-meta">
+              <span>Capacity: 1 Guest</span>
+              <span>·</span>
+              <span>Queen-Single &amp; Lake View</span>
+            </div>
+            <p class="room-desc">
+              Upgraded solo comfort featuring a queen-single bed, panoramic Lake Victoria morning view, mini-bar fridge, artisan coffee press, and plush bathrobe.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-rate">KSh 4,000</span>
+                <span class="room-rate-unit"> / night</span>
+              </div>
+              <a href="booking.html?room=DeluxeSingle" class="btn-cta">Book Deluxe Single</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <div class="room-thumb">
+            <img src="images/room_double.jpg" alt="Double Room overlooking Lake Victoria at Sunrise Hotel Kisumu">
+            <span class="room-badge-pill">Max 2 Guests</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Double Room</h3>
+            <div class="room-meta">
+              <span>Capacity: 2 Guests</span>
+              <span>·</span>
+              <span>Lake Victoria Balcony</span>
+            </div>
+            <p class="room-desc">
+              Generous room layout featuring an elegant king-size bed, private balcony overlooking Lake Victoria, rainfall shower, and complimentary coffee &amp; tea bar.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-rate">KSh 5,000</span>
+                <span class="room-rate-unit"> / night</span>
+              </div>
+              <a href="booking.html?room=Double" class="btn-cta">Book Double</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <div class="room-thumb">
+            <img src="images/room_superior_double.jpg" alt="Superior Lakeview Double Room with Sunset Balcony">
+            <span class="room-badge-pill">Max 2 Guests</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Superior Lakeview Double</h3>
+            <div class="room-meta">
+              <span>Capacity: 2 Guests</span>
+              <span>·</span>
+              <span>Sunset Terrace &amp; Smart TV</span>
+            </div>
+            <p class="room-desc">
+              Elevated double sanctuary offering direct golden-hour sunset vistas over the lake, private furnished veranda, double-sink marble vanity, and smart entertainment.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-rate">KSh 6,000</span>
+                <span class="room-rate-unit"> / night</span>
+              </div>
+              <a href="booking.html?room=SuperiorDouble" class="btn-cta">Book Superior</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <div class="room-thumb">
+            <img src="images/room_twin_deluxe.jpg" alt="Twin Deluxe Room with Garden and Lake View">
+            <span class="room-badge-pill">Max 2 Guests</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Twin Deluxe Room</h3>
+            <div class="room-meta">
+              <span>Capacity: 2 Guests</span>
+              <span>·</span>
+              <span>Two Separate Twin Beds</span>
+            </div>
+            <p class="room-desc">
+              Ideal for colleagues or friends traveling together, fitted with two plush twin beds, private patio opening to tropical gardens, and generous wardrobe storage.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-rate">KSh 5,500</span>
+                <span class="room-rate-unit"> / night</span>
+              </div>
+              <a href="booking.html?room=TwinDeluxe" class="btn-cta">Book Twin</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <div class="room-thumb">
+            <img src="images/room_family.jpg" alt="Family Room Suite at Sunrise Hotel Kisumu">
+            <span class="room-badge-pill">Max 4 Guests</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Family Room</h3>
+            <div class="room-meta">
+              <span>Capacity: 4 Guests</span>
+              <span>·</span>
+              <span>Master &amp; Twin Beds</span>
+            </div>
+            <p class="room-desc">
+              Expansive family suite with adjoining master and twin beds, comfortable living seating, dual vanity sinks, and scenic panoramic sunset views over the lake.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-rate">KSh 7,000</span>
+                <span class="room-rate-unit"> / night</span>
+              </div>
+              <a href="booking.html?room=Family" class="btn-cta">Book Family</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <div class="room-thumb">
+            <img src="images/room_executive.jpg" alt="Executive Lake Suite with Lounge and Lake View">
+            <span class="room-badge-pill">Max 3 Guests</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Executive Lake Suite</h3>
+            <div class="room-meta">
+              <span>Capacity: 3 Guests</span>
+              <span>·</span>
+              <span>Private Lounge &amp; Executive Desk</span>
+            </div>
+            <p class="room-desc">
+              Sophisticated executive suite featuring a king master bedroom, separate leather lounge, lakefront balcony, dedicated work station, and VIP turndown service.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-rate">KSh 10,000</span>
+                <span class="room-rate-unit"> / night</span>
+              </div>
+              <a href="booking.html?room=Executive" class="btn-cta">Book Executive</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <div class="room-thumb">
+            <img src="images/room_lakefront_cottage.jpg" alt="Lakefront Luxury Cottage with Shoreline Garden Access">
+            <span class="room-badge-pill">Max 3 Guests</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Lakefront Luxury Cottage</h3>
+            <div class="room-meta">
+              <span>Capacity: 3 Guests</span>
+              <span>·</span>
+              <span>Vaulted Ceiling &amp; Stone Patio</span>
+            </div>
+            <p class="room-desc">
+              Charming standalone lakeside chalet featuring exposed timber trusses, handcrafted wood fittings, private sun deck, and direct lawn path to Lake Victoria shore.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-rate">KSh 12,000</span>
+                <span class="room-rate-unit"> / night</span>
+              </div>
+              <a href="booking.html?room=Cottage" class="btn-cta">Book Cottage</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <div class="room-thumb">
+            <img src="images/room_honeymoon_villa.jpg" alt="Honeymoon Panoramic Villa with Private Plunge Pool">
+            <span class="room-badge-pill">Max 2 Guests</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Honeymoon Panoramic Villa</h3>
+            <div class="room-meta">
+              <span>Capacity: 2 Guests</span>
+              <span>·</span>
+              <span>Canopy Bed &amp; Plunge Pool</span>
+            </div>
+            <p class="room-desc">
+              Intimate romantic haven boasting a draped four-poster king canopy bed, deep freestanding stone tub, private plunge pool overlooking sunset lake waters, and sparkling wine.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-rate">KSh 14,000</span>
+                <span class="room-rate-unit"> / night</span>
+              </div>
+              <a href="booking.html?room=Honeymoon" class="btn-cta">Book Honeymoon</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <div class="room-thumb">
+            <img src="images/room_Executive.jpg" alt="Executive Sunset Suite with Wrap-Around Balcony">
+            <span class="room-badge-pill">Max 4 Guests</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Executive Sunset Suite</h3>
+            <div class="room-meta">
+              <span>Capacity: 4 Guests</span>
+              <span>·</span>
+              <span>Penthouse, Jacuzzi &amp; Chandelier</span>
+            </div>
+            <p class="room-desc">
+              The crown jewel of Sunrise Hotel Kisumu. Grand master bedroom with four-poster bed, crystal chandelier, wrap-around lake balcony, marble jacuzzi, and private dining space.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-rate">KSh 15,000</span>
+                <span class="room-rate-unit"> / night</span>
+              </div>
+              <a href="booking.html?room=Presidential" class="btn-cta">Book Executive</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong style="color: #ffffff; font-size: 1.15rem;">Sunrise Hotel, Kisumu</strong>
+        <p style="margin-top: 4px; color: #cbd5e1;">Milimani Lakefront Promenade, Kisumu, Kenya | Tel: +254 748 642 275</p>
+        <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 2px;">Email: marvinfrank2680@gmail.com</p>
+      </div>
+      <div>
+        <p>&copy; 2026 Sunrise Hotel, Kisumu. All Rights Reserved.</p>
+        <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 2px;">Powered by FrankHoldings></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

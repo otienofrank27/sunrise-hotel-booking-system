@@ -1,0 +1,6 @@
+{
+  "name": "Sunrise Hotel Kisumu - Room Booking & Billing System",
+  "description": "Online hotel room booking and billing web application for Sunrise Hotel in Kisumu, on Lake Victoria. Features dynamic rate estimation, client validation, and PHP server processing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
